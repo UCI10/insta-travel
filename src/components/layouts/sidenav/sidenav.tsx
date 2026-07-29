@@ -11,9 +11,9 @@ const SideNav = () => {
         className="flex rounded-md mt-18 px-4"
         href="/"
       >
-        <div className="text-white">
+        {/* <div className="text-white">
           <Home sx={{ color: '#FFF' }} />
-        </div>
+        </div> */}
       </Link>
       <Link
         className="flex rounded-md mt-7 px-4"

@@ -5,12 +5,12 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Paper from '@mui/material/Paper';
 import Image from 'next/image';
-import Hokkaido from '@@/01_hokkaido.png';
-import Aomori from '@@/02_aomori.png';
-import Akita from '@@/03_akita.png';
-import Iwate from '@@/04_iwate.png';
-import Yamagata from '@@/05_yamagata.png';
-import Miyagi from '@@/06_miyagi.png';
+// import Hokkaido from '@@/01_hokkaido.png';
+// import Aomori from '@@/02_aomori.png';
+// import Akita from '@@/03_akita.png';
+// import Iwate from '@@/04_iwate.png';
+// import Yamagata from '@@/05_yamagata.png';
+// import Miyagi from '@@/06_miyagi.png';
 
 const Home = () => {
   const [value, setValue] = React.useState('domestic');
@@ -30,7 +30,7 @@ const Home = () => {
       <main>
         <Paper elevation={3} className="mt-10 relative">
           <div>
-            <div className="h-40 w-40 absolute top-0 right-0">
+            {/* <div className="h-40 w-40 absolute top-0 right-0">
               <Image
                 src={Hokkaido}
                 alt="hokkaido"
@@ -83,7 +83,7 @@ const Home = () => {
                 width={100}
                 height={100}
               />
-            </div>
+            </div> */}
           </div>
         </Paper>
       </main>
