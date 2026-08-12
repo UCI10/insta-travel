@@ -24,8 +24,8 @@ import DirectionsBusIcon from '@mui/icons-material/DirectionsBus';
 import LocalTaxiIcon from '@mui/icons-material/LocalTaxi';
 import TrainIcon from '@mui/icons-material/Train';
 import BgImageTemplate from './ui/bg-image-template';
+import DownloadModal from './ui/download-modal';
 import Button from '@mui/material/Button';
-import html2canvas from 'html2canvas';
 // import { useImageTemplateAtom } from 'stores/useImageTemplate';
 
 const now = dayjs();
@@ -34,6 +34,7 @@ const ItineraryPreview = () => {
   const [travels] = useAtom(currentTravelAtom);
   const [, setSpot] = useAtom(currentSpotAtom);
   const [bGImage, setBGImage] = useAtom(currentBackgroundTemplateAtom);
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
   const newSpot: Spot = {
     id: createRandom(),
     name: '',
@@ -105,31 +106,13 @@ const ItineraryPreview = () => {
     setSpot({key: 'all', value: newSpot});
   };
 
-  const clickDownloadButton = () => {
-    const element = document.getElementById('download-target-element');
-
-    html2canvas(element as HTMLElement).then(canvas => {
-        // CanvasをPNGデータ（Base64）に変換
-        const imgData = canvas.toDataURL('image/png');
-        
-        // ダウンロード用のリンクを作ってクリックさせる
-        const link = document.createElement('a');
-        link.download = 'screenshot.png';
-        link.href = imgData;
-        link.click();
-    });
+  const openDownloadModal = () => {
+    setIsModalOpen(true);
   };
 
-  // const selectedBgImageTemplate = (): string => {
-  //   const findTemplate = imageTemplate.find(
-  //     (imageTemplateDay) => imageTemplateDay.day === selectedTravel.day
-  //   ).template;
-  //   if (findTemplate) {
-  //     return findTemplate;
-  //   } else {
-  //     return 'none';
-  //   }
-  // };
+  const closeDownloadModal = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <LeftHalfWidth>
@@ -194,7 +177,7 @@ const ItineraryPreview = () => {
               border: 'solid 2px #2e7d32',
             }}
             color='success'
-            onClick={clickDownloadButton}
+            onClick={openDownloadModal}
           >
             <Box>
               <Typography variant="subtitle2">Download</Typography>
@@ -215,7 +198,7 @@ const ItineraryPreview = () => {
           }}
         >
           <BorderItem />
-          {/* <Timeline
+          <Timeline
             position="alternate"
             sx={{ justifyContent: 'space-between', zIndex: 2 }}
           >
@@ -335,9 +318,15 @@ const ItineraryPreview = () => {
             ) : (
               <></>
             )}
-          </Timeline> */}
+          </Timeline>
           <BgImageTemplate bgImage={bGImage} />
         </Paper>
+        {isModalOpen && 
+          <DownloadModal
+            isOpen={isModalOpen}
+            onClose={closeDownloadModal}
+          />
+        }
       </Box>
     </LeftHalfWidth>
   );
