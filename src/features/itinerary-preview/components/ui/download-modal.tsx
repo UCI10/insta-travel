@@ -98,10 +98,10 @@ const DownloadModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
         open={isOpen}
         onClose={onClose}
         sx={{
-          height: '90%',
+          display: 'flex',
           justifyContent: 'center',
-          m: 1,
-          backgroundColor: 'white',
+          alignItems: 'center',
+          overflow: 'auto',
         }}
       >
         <LeftHalfWidth>
@@ -109,7 +109,7 @@ const DownloadModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
             id="download-target-element"
             elevation={3}
             sx={{
-              height: '100%',
+              height: '90%',
               width: '70%',
               textAlign: 'center',
               position: 'relative',
@@ -121,7 +121,7 @@ const DownloadModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
             <BorderItem />
             <Timeline
               position="alternate"
-              sx={{ justifyContent: 'space-between', zIndex: 2 }}
+              sx={{ justifyContent: 'space-around', zIndex: 2 }}
             >
               {travels.spots.map((travel, index) => (
                 <div key={travel.id}>
@@ -214,17 +214,18 @@ const DownloadModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
           </Paper>
           <Box
             sx={{
-              width: '10%',
+              ml: 3,
               display: 'flex',
-              mr: 1,
+              flexDirection: 'column',
             }}
           >
             <Button
-              sx={{
-                display: 'flex',
-                alignItems: 'center',
-                border: 'solid 2px #2e7d32',
+              sx={{ 
+                mb: 3,
+                height: '50px',
               }}
+              size="large"
+              variant="contained"
               color='success'
               onClick={clickDownloadButton}
             >
@@ -233,11 +234,11 @@ const DownloadModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
               </Box>
             </Button>
             <Button
-              sx={{
-                display: 'flex',
-                alignItems: 'center',
-                border: 'solid 2px #2e7d32',
+              sx={{ 
+                height: '50px',
               }}
+              size="large"
+              variant="contained"
               color='error'
               onClick={onClose}
             >
@@ -252,10 +253,14 @@ const DownloadModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
 };
 
 const LeftHalfWidth = styled.div({
-  width: '100%',
-  height: 'calc(100vh - 90px)',
+  height: '90%',
+  width: '60%',
   padding: '5px',
   margin: '0 auto',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  backgroundColor: 'rgba(0, 0, 0, 0.5)',
 });
 
 const SelectTravelButton = styled.button({

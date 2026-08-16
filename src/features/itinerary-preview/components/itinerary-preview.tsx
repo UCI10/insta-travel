@@ -185,7 +185,6 @@ const ItineraryPreview = () => {
           </Button>
         </Box>
         <Paper
-          id="download-target-element"
           elevation={3}
           sx={{
             height: '100%',
