@@ -183,7 +183,7 @@ const ItineraryPreview = () => {
               <Typography variant="subtitle2">Download</Typography>
             </Box>
           </Button>
-        </Box>
+        </Box> 
         <Paper
           elevation={3}
           sx={{
